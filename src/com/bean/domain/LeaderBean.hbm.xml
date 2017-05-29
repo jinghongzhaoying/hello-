@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping 
+	package="com.bean.domain">
+
+	<class name="LeaderBean" table="leader">
+		<!-- 应用缓存 -->
+		<cache usage="read-write" region="com.bean.domain.LeaderBean"/>
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		
+		<property name="typeid" not-null="true" type="int"/>
+		<property name="name" not-null="true"/>
+		<property name="password" not-null="true"/>
+		<property name="age" not-null="true" type="int"/>
+		<property name="sex" not-null="true"/>
+		<property name="tel" not-null="true"/>
+	    <property name="email" not-null="true" />
+	    <property name="position" not-null="true"/>
+	
+		
+		
+	</class>
+	
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping 
+	package="com.bean.domain">
+
+	<class name="EvaluationBean" table="evaluation">
+		<!-- 应用缓存 -->
+		<cache usage="read-write" region="com.bean.domain.EvaluationBean"/>
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="teacherid" not-null="true" type="int"/>
+		<property name="evalid" not-null="true" type="int"/>
+		<property name="evaltypeid" not-null="true" type="int"/>
+		<property name="evalscore" not-null="true" type="float"/>
+		<property name="remark" not-null="true"/>
+		<property name="datetime" not-null="true" type="date"/>
+	</class>
+	
+</hibernate-mapping>

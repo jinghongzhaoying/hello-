@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ 	xmlns:context="http://www.springframework.org/schema/context"
+  	xmlns:tx="http://www.springframework.org/schema/tx"
+   	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-2.5.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+    
+   	<context:annotation-config/>
+   		 
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation" value="classpath:hibernate.cfg.xml" />
+	</bean>
+	
+	<bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="txManager"/>
+	
+	<!-- bean的配置，主要是dao的实现类 -->
+	<bean id="logintypeDao" class="com.bean.dao.impl.LoginTypeDao"/>
+	<bean id="studentDao" class="com.bean.dao.impl.StudentDao"/>
+	<bean id="teacherDao" class="com.bean.dao.impl.TeacherDao"/>
+	<bean id="parentsDao" class="com.bean.dao.impl.ParentsDao"/>
+	<bean id="adminDao" class="com.bean.dao.impl.AdminDao"/>
+	<bean id="expertsDao" class="com.bean.dao.impl.ExpertsDao"/>
+	<bean id="leaderDao" class="com.bean.dao.impl.LeaderDao"/>
+	<bean id="evauateDao" class="com.bean.dao.impl.EvaluationDao"/>
+	
+	<!-- action的path -->
+	<bean name="/login" class="com.web.action.LoginAction"/>
+	<bean name="/queryTeachers" class="com.web.action.TeacherAction"/>
+	<bean name="/evaluate" class="com.web.action.EvaluateAction"/>
+	<bean name="/personCenter" class="com.web.action.PersonCenter"/>
+	<!--下面的代码是我加的-->
+	<bean name="/queryStudents" class="com.web.action.StudentAction"/>
+	<bean name="/queryParents" class="com.web.action.ParentsAction"/>
+	<bean name="/queryLeaders" class="com.web.action.LeaderAction"/>
+	<bean name="/queryExperts" class="com.web.action.ExpertsAction"/>
+	<bean name="/queryEvaluation" class="com.web.action.EvaluateAction"/>
+	</beans>
